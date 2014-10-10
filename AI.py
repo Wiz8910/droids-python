@@ -45,12 +45,14 @@ class AI(BaseAI):
   ##This function is called once, after your last turn
   def end(self):
     pass
+  #my random move function
   def move_units(self):
     for droid in self.droids
     directions = [(1,0), (-1,0),(0,1),(0,-1)]
-    for _ in range(self.maxMovement):
-        movement = random.choice(direction)
-    droid.move(droid.x+movement[0], droid.y+movement[1])
+    for _ in range(droid.maxMovement):
+      movement = random.choice(direction)
+      droid.move(droid.x+movement[0], droid.y+movement[1])
+    
   ##This function is called each time it is your turn
   ##Return true to end your turn, return false to ask the server for updated information
   def run(self):
