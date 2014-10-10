@@ -1,6 +1,30 @@
 #-*-python-*-
 from BaseAI import BaseAI
 from GameObject import *
+class cache:
+  
+  enemy_hanger=[]
+  enemy_droids=[]
+  my_droids = []
+  walls = []
+  
+  ai = None
+  def _init_(self,ai):
+    self.ai = ai
+    self.my_droids = [[None for _ in range(self.ai.mapHeight)] for _ in range(self.ai.mapWidth)]
+    sel.enemy_droids =[[None for _ in range(self.ai.mapHeight)] for _ in range(self.ai.mapWidth)]
+    self.enemy_hangars =[[None for _ in range(self.ai.mapHeight)] for _ in range(self.ai.mapWidth)]
+    
+  def update_droids(self):
+    for droid in self.ai.droids:
+      if droid.owner == self.ai.playerID:
+        self.my_droids[droid.x][droid.y] = droid
+      elif droid.owner == self.ai.playerID^1:
+        self.enemy_droids[droid.x][droid.y]= droid
+      else:
+        print("THIS IS WRONG.")
+      
+  
 
 class AI(BaseAI):
   """The class implementing gameplay logic."""
